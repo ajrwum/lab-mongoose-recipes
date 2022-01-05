@@ -38,6 +38,18 @@ mongoose
     .catch((err) => {
       console.error(err);
     })
+
+    // === iteration 3
+    Recipe.insertMany(data)
+    .then((recipes) => {
+      for (const recipe of recipes) {
+        console.log(recipe.title);
+      }
+    })
+    .catch((err) => {
+      console.error(err);
+    })
+    
     
     
   })
