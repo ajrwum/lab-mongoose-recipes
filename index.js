@@ -70,19 +70,20 @@ mongoose
         const res = await Recipe.deleteOne(filter);
         // - once done, displaying the successful message
         console.log(`${titleToDelete} recipe delete request - success: ${res.deletedCount} document deleted`);
+        
+        // === iteration 6 - closing the connection when done with the rest
+        mongoose.disconnect(() => console.log('Connection to DB now closed'));
       }
       catch (err) {
         console.error(err);
       }
-
-
     })
     .catch((err) => {
       console.error(err);
     })
-
     
   })
   .catch(error => {
     console.error('Error connecting to the database', error);
   });
+  
