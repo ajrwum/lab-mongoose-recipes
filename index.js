@@ -47,15 +47,15 @@ mongoose
       }
 
       // === iteration 4
-      // - building the parameters for the request
-      const filter = { title: "Rigatoni alla Genovese" };
-      const update = { duration: 100 };
-      const option = { new: true };
-      // - updating the recipe
       try {
+        // - building the parameters for the request
+        const filter = { title: "Rigatoni alla Genovese" };
+        const update = { duration: 100 };
+        const option = { new: true };
+        // - updating the recipe
         const updatedRecipe = await Recipe.findOneAndUpdate(filter, update, option)
-          // - once done, displayed the success message
-          console.log(`Update successful! The ${updatedRecipe.title} recipe's duration is now ${updatedRecipe.duration}.`);
+        // - once done, displayed the success message
+        console.log(`Update successful! The ${updatedRecipe.title} recipe's duration is now ${updatedRecipe.duration}.`);
       }
       catch (err) {
         console.error(err);
