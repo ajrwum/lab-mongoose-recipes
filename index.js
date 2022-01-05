@@ -48,7 +48,7 @@ mongoose
 
       // === iteration 4
       try {
-        // - building the parameters for the request
+        // - building the parameters for the update request
         const filter = { title: "Rigatoni alla Genovese" };
         const update = { duration: 100 };
         const option = { new: true };
@@ -56,6 +56,20 @@ mongoose
         const updatedRecipe = await Recipe.findOneAndUpdate(filter, update, option)
         // - once done, displayed the success message
         console.log(`Update successful! The ${updatedRecipe.title} recipe's duration is now ${updatedRecipe.duration}.`);
+      }
+      catch (err) {
+        console.error(err);
+      }
+
+      // === iteration 5
+      try {
+        // - building the parameters for the delete request
+        const titleToDelete = "Carrot Cake";
+        const filter = { title: titleToDelete };
+        // - deleting the recipe
+        const res = await Recipe.deleteOne(filter);
+        // - once done, displaying the successful message
+        console.log(`${titleToDelete} recipe delete request - success: ${res.deletedCount} document deleted`);
       }
       catch (err) {
         console.error(err);
